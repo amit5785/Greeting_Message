@@ -1,17 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import "./index.css";
+import Card from "./Card";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+var time=new Date();
+let x=time.toLocaleTimeString();
+var greeting;
+var las=x.substring(x.length-2);
+var t=x.substring(0,x.indexOf(':'));
+let given={};
+if(las=="AM")
+{
+  greeting="Good Morning !!";
+  given.color='green';
+}
+else
+{
+  if(7>=t || t==12 || 1<=t)
+  {
+    greeting='Good Afternoon !!!';
+    given.color='orange';
+  }
+  else
+  {
+    greeting="Good Neight !!!";
+    given.color='black';
+  }
+}
+ReactDOM.render(<Card msg={greeting} stylegiven={given}/>,document.getElementById('root'));
